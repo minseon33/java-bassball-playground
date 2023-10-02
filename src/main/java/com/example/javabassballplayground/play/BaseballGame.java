@@ -44,7 +44,6 @@ public class BaseballGame {
             ball += getBall(ball, playerNumberDigits, baseballNumberDigits, i);
         }
 
-        
         // 정답 메세지 추출
         return createMassage(strike,ball);
 
@@ -136,4 +135,5 @@ public class BaseballGame {
         playerNumber = null;
 
     }
+
 }

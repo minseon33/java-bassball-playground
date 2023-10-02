@@ -37,12 +37,10 @@ public class Baseball {
                 thirdNumber = null;
             }
         }
-
         //최종 숫자야구 숫자 저장
         String resultNumber = firstNumber+secondNumber+thirdNumber;
-
         baseballNumber = Integer.parseInt(resultNumber);
-
         return baseballNumber;
     }
+
 }
