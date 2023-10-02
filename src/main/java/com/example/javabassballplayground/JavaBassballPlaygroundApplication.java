@@ -7,20 +7,24 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Scanner;
 
-@SpringBootApplication
+//@SpringBootApplication  //이걸 쓸 필요가 없다~~
 public class JavaBassballPlaygroundApplication {
 
     public static void main(String[] args) {
 //        SpringApplication.run(JavaBassballPlaygroundApplication.class, args);
         Baseball baseball= new Baseball();
-        BaseballGame baseballGame = new BaseballGame(baseball);
+        BaseballGame baseballGame = null;
         Scanner sc = new Scanner(System.in);
-        Integer playerNumber;
+        int playerNumber;
         int endGame = 0;
 
+        // inputView, outputView 나누기, 로직 담당 하는 녀석 분리
+        // 모든 메서드 라인은 20줄 모든 메서드 짧게 기능별로 책임 분리
+        // 한 메서드에서 뎁스가 2 이상이면 안된다. 굳굳 bb
         while (endGame!=2){
-            if(baseball.baseballNumber==null){
+            if(baseball.baseballNumber==null || baseballGame==null){
                 baseball.createNumber();
+                baseballGame = new BaseballGame(baseball);
             }
             System.out.println("숫자를 입력하세요");
             playerNumber = sc.nextInt();
@@ -32,6 +36,8 @@ public class JavaBassballPlaygroundApplication {
                 endGame = sc.nextInt();
 
                 if(endGame == 2){
+                    baseballGame.endGame();
+                }else {
                     baseballGame.endGame();
                 }
             }

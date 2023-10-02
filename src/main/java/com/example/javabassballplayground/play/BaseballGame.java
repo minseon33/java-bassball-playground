@@ -16,12 +16,17 @@ public class BaseballGame {
         this.baseballNumber = baseball.baseballNumber;
     }
 
+    // 테스트용 생성자 프라이빗으로 만들자.
     public BaseballGame(Integer baseballNumber) {
         this.baseball = new Baseball();
         this.baseballNumber = baseballNumber;
     }
 
 
+
+    //playerNumber가 널로 들어온다. 디버거로 찍어보자.
+    // nextInt() <-별로 안좋다.
+    // br.readLine() <- 추천
     public String validateNumber(Integer playerNumber){
         this.playerNumber = playerNumber;
         int strike = 0;
@@ -31,7 +36,7 @@ public class BaseballGame {
 
         // 자리수 구하기
         ArrayList<Integer> playerNumberDigits = countDigits(playerNumber, playerNumberList);
-        ArrayList<Integer> baseballNumberDigits = countDigits(baseballNumber, baseballNumberList);
+        ArrayList<Integer> baseballNumberDigits = countDigits(this.baseballNumber, baseballNumberList);
 
         //해당 자리수에 숫자가 같은지 확인
         for (int i = 0; i < 3; i++) {
@@ -71,6 +76,9 @@ public class BaseballGame {
      * @param i
      * @return
      */
+
+    //i가 무슨일을 하는지 이름을 지어주면 좋겠다.
+    // Integer 은 객체이기 때문에 equals를 써야한다.
 
     private int getBall(int ball, ArrayList<Integer> playerNumberDigits, ArrayList<Integer> baseballNumberDigits, int i) {
         if(i ==0){
@@ -133,7 +141,7 @@ public class BaseballGame {
         baseball = null;
         baseballNumber = null;
         playerNumber = null;
-
     }
+
 
 }
