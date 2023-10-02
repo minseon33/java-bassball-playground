@@ -57,7 +57,7 @@ public class BaseballGame {
      * @param numberList
      * @return : numberList
      */
-    public ArrayList<Integer> countDigits(Integer number, ArrayList<Integer> numberList) {
+    private ArrayList<Integer> countDigits(Integer number, ArrayList<Integer> numberList) {
         while (number >0){
             numberList.add(number %10);
             number /=10;
@@ -74,7 +74,7 @@ public class BaseballGame {
      * @return
      */
 
-    public int getBall(int ball, ArrayList<Integer> playerNumberDigits, ArrayList<Integer> baseballNumberDigits, int i) {
+    private int getBall(int ball, ArrayList<Integer> playerNumberDigits, ArrayList<Integer> baseballNumberDigits, int i) {
         if(i ==0){
             if(playerNumberDigits.get(i)== baseballNumberDigits.get(1)){
                 ball++;
@@ -108,7 +108,7 @@ public class BaseballGame {
      * @return
      */
 
-    public String createMassage(int strike, int ball){
+    private String createMassage(int strike, int ball){
         String massage = "";
 
         if(strike == 3){
