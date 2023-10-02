@@ -1,7 +1,6 @@
 package com.example.javabassballplayground.play;
 
 import com.example.javabassballplayground.entity.Baseball;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;

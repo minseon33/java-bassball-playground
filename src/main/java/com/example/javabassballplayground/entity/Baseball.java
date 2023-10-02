@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.Random;
 
-
 public class Baseball {
     public Integer baseballNumber;
     private String firstNumber;
