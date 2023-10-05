@@ -1,11 +1,8 @@
 package com.example.javabassballplayground.domain;
 
-import com.example.javabassballplayground.service.ErrorMessage;
+import com.example.javabassballplayground.enums.ErrorMessage;
 
-import java.nio.channels.IllegalBlockingModeException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Baseball {
 //    public Integer baseballNumber;
@@ -21,11 +18,38 @@ public class Baseball {
 
     private void validateDuplicate(List<String> baseballNumber) {
         if(baseballNumber.size()!=BASEBALL_NUMBER_SIZE){
-            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER_ERROR.toString());
+            throw new IllegalArgumentException(ErrorMessage.BASEBALL_SIZE_ERROR.toString());
         }
     }
 
     private void validateSize(List<String> baseballNumber) {
+        Set<String> nonDuplicateNumbers = new HashSet<>(baseballNumber);
+        if(nonDuplicateNumbers.size() != BASEBALL_NUMBER_SIZE){
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER_ERROR.toString());
+        }
 
+    }
+
+    /**
+     * baseballNumber 조회하는 메서드
+     * @return :: baseballNumber
+     */
+    public List<String> getBaseballNumber(){
+        return baseballNumber;
+    }
+
+    /**
+     * List<String> 으로 저장되어 있는 ballballNumber들을 3자리 int로 변환해주는 메서드
+     * @param baseballNumber
+     * @return
+     */
+
+    public int convertBaseballToInt(List<String> baseballNumber){
+        String mergedBaseballNumber = "";
+        for (int i = 0; i < baseballNumber.size(); i++) {
+            mergedBaseballNumber += baseballNumber.get(i);
+        }
+        int convertedBaseballInt = Integer.parseInt(mergedBaseballNumber);
+        return convertedBaseballInt;
     }
 }

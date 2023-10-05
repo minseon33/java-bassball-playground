@@ -1,4 +1,4 @@
-package com.example.javabassballplayground.service;
+package com.example.javabassballplayground.enums;
 
 import lombok.Builder;
 

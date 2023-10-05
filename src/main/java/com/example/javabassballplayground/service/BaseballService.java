@@ -1,30 +1,32 @@
 package com.example.javabassballplayground.service;
 
-import java.util.ArrayList;
+import com.example.javabassballplayground.domain.Baseball;
+
+import java.util.List;
 import java.util.Random;
 
 public class BaseballService {
 
-    public static ArrayList<String> baseballNumber = new ArrayList<>();
+    public Baseball baseball;
+
+    private List<String> baseballDigitNumber;
     private String hundredsDigit;
     private String tensDigit;
     private String onesDigit;
     Random random = new Random();
 
+    public List<String> generateNumber(){
+        //백의자리수 번호 결정
+        baseballDigitNumber.add(hundredsDigit = determineDigitNumber(hundredsDigit,tensDigit,onesDigit));
 
+        //십의 자리수 번호 결정
+        baseballDigitNumber.add(tensDigit = determineDigitNumber(tensDigit,hundredsDigit,onesDigit));
 
-    public ArrayList<String> createNumber(){
-        //백의자리수 번호 생성
-        baseballNumber.add(hundredsDigit = determineDigitNumber(hundredsDigit,tensDigit,onesDigit));
-
-        //십의 자리수 번호 생성
-        baseballNumber.add(tensDigit = determineDigitNumber(tensDigit,hundredsDigit,onesDigit));
-
-        //일의 자리수 번호 생성
-        baseballNumber.add(onesDigit = determineDigitNumber(onesDigit,tensDigit,hundredsDigit));
+        //일의 자리수 번호 결정
+        baseballDigitNumber.add(onesDigit = determineDigitNumber(onesDigit,tensDigit,hundredsDigit));
 
         //최종 숫자야구 숫자 저장
-        return baseballNumber;
+        return baseballDigitNumber;
     }
 
     private String determineDigitNumber(String targetDigit,String comparisonFirst, String comparisonSecond) {
@@ -51,5 +53,21 @@ public class BaseballService {
             return null;
         }
         return numberOfDigits;
+    }
+
+
+    public int validateStrikeCount(Baseball baseball, Baseball playerBaseball){
+        int strikeCount = 0;
+        for (int digit = 0; digit < baseball.getBaseballNumber().size(); digit++) {
+            strikeCount += getStrikeCount(baseball, playerBaseball, strikeCount, digit);
+        }
+        return strikeCount;
+    }
+
+    private int getStrikeCount(Baseball baseball, Baseball playerBaseball, int strikeCount, int digit) {
+        if(baseball.getBaseballNumber().get(digit).equals(playerBaseball.getBaseballNumber().get(digit))){
+            strikeCount++;
+        }
+        return strikeCount;
     }
 }

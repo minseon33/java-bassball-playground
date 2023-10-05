@@ -3,6 +3,8 @@ package com.example.javabassballplayground;
 import com.example.javabassballplayground.domain.Baseball;
 import com.example.javabassballplayground.play.BaseballGame;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 //@SpringBootApplication  //이걸 쓸 필요가 없다~~
@@ -39,6 +41,14 @@ public class JavaBassballPlaygroundApplication {
 //                }
 //            }
 //        }
+
+
+
+//----------------------------------------------------------------------------------------------
+        List<String> baseBallNumber = new ArrayList<>();
+        Baseball baseball = new Baseball(baseBallNumber);
+
+
     }
 
 
